@@ -3,50 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de déficit</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Calculadora de Déficit | Wellness</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/css/main.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Calculadora de déficit</h1>
-        <form id="tmbForm">
-            <label for="sexo">Sexo:</label>
-            <select id="sexo" required>
-                <option value="hombre">Hombre</option>
-                <option value="mujer">Mujer</option>
-            </select>
+    <div class="app">
+        <header class="header">
+            <div class="header__decor header__decor--left"></div>
+            <div class="header__content">
+                <h1 class="header__title">Calculadora de <span class="header__title-accent">Déficit</span></h1>
+                <p class="header__subtitle">Descubre tu plan nutricional personalizado</p>
+            </div>
+            <div class="header__decor header__decor--right"></div>
+        </header>
 
-            <label for="edad">Edad (años):</label>
-            <input type="number" id="edad" min="0" required>
+        <main class="main">
+            <form id="calculatorForm" class="calculator">
+                <div class="calculator__card">
+                    <div class="calculator__section">
+                        <h2 class="calculator__section-title">
+                            <span class="calculator__section-icon">👤</span>
+                            Datos Personales
+                        </h2>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="sexo" class="form-label">Sexo</label>
+                                <div class="select-wrapper">
+                                    <select id="sexo" name="sexo" class="form-select" required>
+                                        <option value="hombre">Hombre</option>
+                                        <option value="mujer">Mujer</option>
+                                    </select>
+                                    <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
 
-            <label for="altura">Altura (cm):</label>
-            <input type="number" id="altura" min="50" required>
+                            <div class="form-group">
+                                <label for="edad" class="form-label">Edad</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="edad" name="edad" class="form-input" min="0" max="120" placeholder="Años" required>
+                                    <span class="input-unit">años</span>
+                                </div>
+                            </div>
 
-            <label for="pesoActual">Peso actual (kg):</label>
-            <input type="number" id="pesoActual" min="10" required>
+                            <div class="form-group">
+                                <label for="altura" class="form-label">Altura</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="altura" name="altura" class="form-input" min="50" max="250" placeholder="Centímetros" required>
+                                    <span class="input-unit">cm</span>
+                                </div>
+                            </div>
 
-            <label for="pesoMeta">Peso meta (kg):</label>
-            <input type="number" id="pesoMeta" min="10" required>
+                            <div class="form-group">
+                                <label for="pesoActual" class="form-label">Peso Actual</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="pesoActual" name="pesoActual" class="form-input" min="10" max="300" placeholder="Kilogramos" required>
+                                    <span class="input-unit">kg</span>
+                                </div>
+                            </div>
 
-            <label for="actividad">Factor de actividad:</label>
-            <select id="actividad" required>
-                <option value="1.2">Poco o ningún ejercicio</option>
-                <option value="1.375">Ligero (1-3 días a la semana)</option>
-                <option value="1.55">Moderado (3-5 días a la semana)</option>
-                <option value="1.725">Fuerte (6-7 días a la semana)</option>
-                <option value="1.9">Muy fuerte (dos veces al día)</option>
-            </select>
+                            <div class="form-group">
+                                <label for="pesoMeta" class="form-label">Peso Meta</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="pesoMeta" name="pesoMeta" class="form-input" min="10" max="300" placeholder="Kilogramos" required>
+                                    <span class="input-unit">kg</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-            <label for="deficit">Cuánto espero perder:</label>
-            <select id="deficit" required>
-                <option value="550">0.5 kg por semana</option>
-                <option value="1100">1 kg por semana</option>
-            </select>
+                    <div class="calculator__section">
+                        <h2 class="calculator__section-title">
+                            <span class="calculator__section-icon">⚡</span>
+                            Nivel de Actividad
+                        </h2>
+                        
+                        <div class="form-grid">
+                            <div class="form-group form-group--full">
+                                <label for="actividad" class="form-label">Factor de actividad física</label>
+                                <div class="select-wrapper">
+                                    <select id="actividad" name="actividad" class="form-select" required>
+                                        <option value="1.2">Poco o ningún ejercicio</option>
+                                        <option value="1.375">Ligero (1-3 días/semana)</option>
+                                        <option value="1.55" selected>Moderado (3-5 días/semana)</option>
+                                        <option value="1.725">Fuerte (6-7 días/semana)</option>
+                                        <option value="1.9">Muy fuerte (2 veces/día)</option>
+                                    </select>
+                                    <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
 
-            <button type="submit" id="calcular">Calcular</button>
-        </form>
-        <div id="resultados"></div>
+                            <div class="form-group form-group--full">
+                                <label for="deficit" class="form-label">Objetivo semanal de pérdida</label>
+                                <div class="select-wrapper">
+                                    <select id="deficit" name="deficit" class="form-select" required>
+                                        <option value="550" selected>0.5 kg por semana</option>
+                                        <option value="1100">1 kg por semana</option>
+                                    </select>
+                                    <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <span class="submit-btn__text">Calcular</span>
+                        <svg class="submit-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+
+            <div id="resultsContainer" class="results" hidden>
+                <div class="results__card">
+                    <div class="results__header">
+                        <h2 class="results__title">Tus Resultados</h2>
+                        <button id="resetBtn" class="reset-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                                <path d="M3 3v5h5"/>
+                            </svg>
+                            Nuevo cálculo
+                        </button>
+                    </div>
+
+                    <div id="warningBanner" class="warning-banner" hidden>
+                        <svg class="warning-banner__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                            <line x1="12" y1="9" x2="12" y2="13"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                        <p id="warningText" class="warning-banner__text"></p>
+                    </div>
+
+                    <div class="results__metrics">
+                        <div class="metric-card metric-card--main">
+                            <span class="metric-card__label">Calorías diarias</span>
+                            <span class="metric-card__value" id="kcalConsumir">0</span>
+                            <span class="metric-card__subtitle">para alcanzar tu meta</span>
+                        </div>
+
+                        <div class="metric-card">
+                            <span class="metric-card__label">Mantenimiento</span>
+                            <span class="metric-card__value" id="kcalMantenimiento">0</span>
+                            <span class="metric-card__unit">kcal</span>
+                        </div>
+
+                        <div class="metric-card">
+                            <span class="metric-card__label">Tiempo estimado</span>
+                            <span class="metric-card__value" id="tiempoMeta">0</span>
+                            <span class="metric-card__unit">meses</span>
+                        </div>
+                    </div>
+
+                    <div class="results__imc">
+                        <h3 class="results__imc-title">Índice de Masa Corporal</h3>
+                        <div class="imc-display">
+                            <div class="imc-value">
+                                <span class="imc-value__number" id="imcNumber">0</span>
+                                <span class="imc-value__category" id="imcCategory">-</span>
+                            </div>
+                            <div class="imc-bar">
+                                <div class="imc-bar__track">
+                                    <div class="imc-bar__fill" id="imcBarFill"></div>
+                                    <div class="imc-bar__marker" id="imcMarker"></div>
+                                </div>
+                                <div class="imc-bar__labels">
+                                    <span>15</span>
+                                    <span>18.5</span>
+                                    <span>25</span>
+                                    <span>30</span>
+                                    <span>40</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="results__table">
+                        <h3 class="results__table-title">Categorías IMC</h3>
+                        <div class="imc-table" id="imcTable"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Calculadora de déficit calórico &middot; Para fines informativos</p>
+        </footer>
     </div>
-    <script src="script.js"></script>
+
+    <script type="module" src="src/js/app.js"></script>
 </body>
 </html>
